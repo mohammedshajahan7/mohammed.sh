@@ -134,6 +134,10 @@ nav#pagination{
     display: flex;
     align-items: center;
     justify-content: center;
+    @media all and(max-width: 768px){
+        margin-bottom: 1rem;
+        padding-top: 1rem;
+    }
     ul.paginator {
         list-style: none;
         display: flex;
