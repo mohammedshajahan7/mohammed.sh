@@ -1,0 +1,42 @@
+{{ define "head" }}    
+    {{ $style := resources.Get "styles/projects.scss" }}
+    {{ $style = $style | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+{{ end }}
+
+{{ define "main" }}
+    {{- partial "projects-search.html" . -}}
+
+    <section id="projects">
+        <div class="wrapper">
+            <h3 class="head_title">Projects</h3>
+            <ul class="projects">
+                {{ range .Params.projects }}
+                <li class="project">
+                    <h1 class="title">
+                        <span class="repo"><img src="{{ .Site.BaseURL }}/icons/repo.svg" alt="repo" /></span>
+                        <a href="#">{{ .name }}</a>
+                    </h1>
+                    <p class="description">{{ .desc | markdownify }}</p>
+                    <nav>
+                        {{ range .links }}
+                            <a href="{{ .url }}">{{ .text }}</a>
+                        {{ end }}
+                    </nav>
+                    <ul class="tags">
+                        {{ range .tag }}
+                            <li class="tag"><span class="label {{ . }}">
+                                </span><a href="">{{ . }}</a>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </li>
+                {{ end }}
+            </ul>
+            <div class="view_all">
+                <a href="#" class="button">Show More</a>
+                <hr class="inner_divider" />
+            </div>
+        </div>
+    </section> <!--( #projects )-->
+{{ end }}

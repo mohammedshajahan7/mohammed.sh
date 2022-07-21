@@ -1,0 +1,65 @@
+{{ define "head" }}    
+    {{ $style := resources.Get "styles/donate.scss" }}
+    {{ $style = $style | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+{{ end }}
+
+{{ define "main" }}
+    <section id="donate">
+        <div class="wrapper">
+            <h3 class="head_title">Donate</h3>
+            <div class="content">
+                <p>
+                    To keep my site and projects up and running, there are costs. 
+                    As a full-time college student, I work on projects in my free time.
+                </p>
+                <p>
+                    So, please consider a donation for my future projects and the maintenance of all my sites & projects.
+                </p>
+                <p>
+                    If you would like to mention your website or a message to display on this page,please send them to me after donation. Every donation will be publicly mentioned here, if you’d like not to, please do contact after.
+                </p>
+            </div>
+            
+            <div class="donations">
+                <h3>Donations</h3>
+                <p>
+                    Thank you very much to all the people who have supported me, this site and projects through donations. 🙂 ❤️❤️
+                </p>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name / BTC Address</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2021/04/21</td>
+                                <td>Mohammed</td>
+                                <td>10 USD</td>
+                            </tr>
+                            <tr>
+                                <td>2021/04/03</td>
+                                <td>ALi</td>
+                                <td>10 USD</td>
+                            </tr>
+                            <tr>
+                                <td>2020/02/21</td>
+                                <td>Osman</td>
+                                <td>10 USD</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3">Thankyou</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section> <!-- ( #donate ) -->
+{{ end }}

@@ -1,0 +1,110 @@
+{{ define "head" }}    
+    {{ $style := resources.Get "styles/single.scss" }}
+    {{ $style = $style | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+    {{ $style := resources.Get "styles/toc.scss" }}
+    {{ $style = $style | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+
+    {{ $prismstyle := resources.Get "prism/prism.css" }}
+    {{ $prismstyle = $prismstyle | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $prismstyle.Permalink }}" />
+
+    {{ $prismjs := resources.Get "prism/prism.js" }}
+    {{ $prismjs = $prismjs | fingerprint }}
+    <script src="{{ $prismjs.Permalink }}"></script>
+{{ end }}
+
+{{ define "main" }}
+    <section id="article">
+        <div class="wrapper">
+            <h1>{{ .Title }}</h1>
+            <div class="info">
+                <div class="author">
+                    <img src="{{ .Site.BaseURL }}icons/auth.svg" alt="author" />
+                    <span>{{.Params.author}}</span>
+                </div>
+                <div class="date">
+                    <img src="{{ .Site.BaseURL }}icons/cal.svg" alt="calander" />
+                    <span>{{ dateFormat .Site.Params.dateFormat .Date }}</span>
+                </div>
+                <div class="read_time">
+                    <img src="{{ .Site.BaseURL }}icons/clock.svg" alt="clock" />
+                    <span>{{ math.Round (div (countwords .Content) 220.0) }} min read</span>
+                </div>
+            </div>
+
+            <hr class="line" />
+
+            <details id="toc_container">
+                <summary class="title">Table of Contents</summary>
+                {{ .TableOfContents }}
+            </details>
+
+            <article class="content">
+                {{ with .Params.thumbnail }}
+                    <img src="{{ . }}" alt="img" class="thumbnail" />
+                {{ end }}
+                {{ .Content }}
+            </article>
+        </div>
+    </section> <!-- ( #article ) -->
+
+    <hr class="line wrapper" />
+
+    <section id="switch_post">
+        <div class="wrapper flex_wrapper">
+            {{ with .Site.RegularPages.Prev .  }} 
+            <a href="{{ .Permalink}}" class="prev">Prev</a>
+            {{ end }}
+            {{ with .Site.RegularPages.Next .  }}
+            <a href="{{.Permalink}}" class="next">Next</a>
+            {{ end }}
+        </div>
+    </section> <!-- ( #switch_post ) -->
+
+    {{ $related := $.Site.RegularPages.Related . | first 5 }}
+    {{ with $related }}
+        <section id="articles">
+            <div class="wrapper">
+                <h3 class="head_title">Related Posts</h3>
+                <div class="space-y">
+                    <ul class="articles">
+                        <span class="timeline_border"></span>
+                        {{ range . }}
+                            <li class="article">
+                                <div class="article_title">
+                                    <span class="indicator"></span>
+                                    <a href="{{ .Permalink }}">
+                                        <span class="date" data-v-fc4995a6="">{{ .Date.Format .Site.Params.dateFormat }}</span>
+                                        <span class="divider" data-v-fc4995a6="">—</span>
+                                        <span class="title" data-v-fc4995a6="">{{ .Title }}</span>
+                                    </a>
+                                </div>
+                                <p class="article_description">{{ .Summary | safeHTML | truncate 150 }}</p>
+                            </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </section> <!-- ( #articles ) -->
+    {{ end }}
+
+    <section id="tags">
+        <div class="wrapper">
+            <h3 class="head_title">Tags</h3>
+            <ul class="tags">
+                {{ $taxo := "tags" }}
+                {{ range .Param $taxo }}
+                    {{ $name := . }}
+                    {{ with $.Site.GetPage (printf "/%s/%s" $taxo ($name | urlize)) }}
+                        <li class="tag">
+                            <a href="{{ .Permalink }}" title="{{ $name }}" class="{{ $name }}">#{{ $name }}</a>
+                        </li>
+                    {{ end }}
+                {{ end }}
+            </ul>
+        </div>
+    </section> <!-- ( #tags ) -->
+{{ end }}

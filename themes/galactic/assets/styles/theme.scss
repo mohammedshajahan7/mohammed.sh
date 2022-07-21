@@ -1,0 +1,67 @@
+// font
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+// normal mode (light mode)
+:root {
+    --theme:rgb(245, 245, 245);
+    --primary: rgb(30, 30, 30);
+    --secondary: rgba(108, 108, 108);
+    --entry: rgb(255, 255, 255);
+    --border_color: rgba(229,229,229,1);
+    --border_color_hover: rgba(212,212,212,1);
+    --inputs_bg: rgba(245,245,245,1);
+    --border_line_color: rgba(229,229,229,1);
+
+    // theme_toggle_icons_change
+    --sun_icon_visibility: none;
+    --moon_icon_visibility: block;
+    --filter_invert: invert(0);
+}
+
+// dark mode 
+.darkmode {
+    --theme:rgb(29, 30, 32);
+    --primary: rgb(218, 218, 219);
+    --secondary: rgba(155, 156, 157);
+    --entry: rgb(46, 46, 51);
+    --border_color: rgba(38,38,38,1);
+    --border_color_hover: rgba(64,64,64,1);
+    --inputs_bg: rgba(38,38,38,1);
+    --border_line_color: rgba(38,38,38,1);
+
+    // theme_toggle_icons_change
+    --sun_icon_visibility: block;
+    --moon_icon_visibility: none;
+    --filter_invert: invert(1);
+}
+
+// theme_toggle
+$sun_icon_visibility: var(--sun_icon_visibility);
+$moon_icon_visibility: var(--moon_icon_visibility);
+$filter_invert: var(--filter_invert);
+
+// theme variables
+$theme: var(--theme);
+$primary: var(--primary);
+$secondary: var(--secondary);
+$entry: var(--entry);
+$border_color: var(--border_color);
+$border_color_hover: var(--border_color_hover);
+$inputs_bg: var(--inputs_bg);
+$border_line_color: var(--border_line_color);
+
+// util variables
+$font_family: 'Ubuntu', sans-serif;
+$gap: 24px;
+$header_height: 60px;
+$footer_height: 60px;
+$radius: 8px;
+$content_gap: 20px;
+
+$top_bottom_padding: 2rem 0 3rem;
+$head_title_size: 1.3rem;
+$h_noramal_size: 1.1rem;
+$p_size: 1rem;
+// $line_height: 1.6rem;
+$line_height: 2rem;
+$box_shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;

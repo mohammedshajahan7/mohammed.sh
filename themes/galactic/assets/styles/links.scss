@@ -1,0 +1,32 @@
+@import './theme.scss';
+
+section#links {
+    padding: $top_bottom_padding;
+    line-height: $line_height;
+    text-align: center;
+    ul.links {
+        width: 30%;
+        margin: 0 auto;
+        list-style: none;
+        @media all and(max-width: 980px){
+            width: 50%;
+        }
+        li.link {
+            width: 100%;
+            padding: .4rem .1rem;
+            border-radius: .3rem;
+            background: $entry;
+            margin-bottom: 20px;
+            text-align: center;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            a {
+                display: block;
+                font-size: $p_size;
+                color: $primary;
+                font-weight: 700;
+            }
+        }
+    }
+}

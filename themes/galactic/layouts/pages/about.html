@@ -1,0 +1,49 @@
+{{ define "head" }}    
+    {{ $style := resources.Get "styles/about.scss" }}
+    {{ $style = $style | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+{{ end }}
+
+{{ define "main" }}    
+    <section id="about">
+        <div class="wrapper">
+            <h3 class="head_title">About</h3>
+            <div class="content">
+                <h3>Hey! 👋 I'm Mohammed</h3>
+                <h3>Hi all,</h3>
+                <p>
+                    I am Mohammed Shajahan, a self-taught programmer who loves to make & tinker with things. 
+                    I was born on 21th march 2003 (Yes, I am a 21st century kid). 
+                    I am currently $age years old and lives in Kerala, India. 
+                    Malayalam (മലയാളം) is my native language. 
+                    I know English, but not really good at it.
+                </p>
+                <p>
+                    started programming in 2018 when I was 15 years old.
+                    16 I love open source because of the collaborative nature and the freedom to hack the software to our use.
+                    I support Free Software, Open Knowledge & Sharing.
+                </p>
+                <h3>Profiles</h3>
+                <p>
+                    You can find me on sites with the username 
+                    <span class="highlight">mohammedshjahan7</span> or 
+                    <span class="highlight">_mohammedsh7</span>
+                </p>
+            </div>
+        </div>
+    </section> <!-- ( #about ) -->
+
+    <section id="contact">
+        <div class="wrapper">
+            <h3 class="head_title">Contact</h3>
+            <form id="gform" method="POST" action="">
+                <div class="input_group">
+                    <input type="text" placeholder="Name" id="name" name="name" />
+                    <input type="email" placeholder="E-mail" id="email" name="email" />
+                    <textarea name="" rows="4" placeholder="Message" id="message" name="message"></textarea>
+                    <input type="submit" value="Send" />
+                </div>
+            </form>
+        </div>
+    </section> <!-- ( #contact ) -->  
+{{ end }}

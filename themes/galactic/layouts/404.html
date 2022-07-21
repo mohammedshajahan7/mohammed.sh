@@ -1,0 +1,13 @@
+{{ define "head" }}    
+    {{ $style := resources.Get "styles/404.scss" }}
+    {{ $style = $style | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+{{ end }}
+
+{{ define "main" }}
+    <section id="notfound">
+        <div class="wrapper flex_wrapper">
+            <h1>404</h1>
+        </div>
+    </section>
+{{ end }}

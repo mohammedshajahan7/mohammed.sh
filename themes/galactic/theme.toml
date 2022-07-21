@@ -1,0 +1,12 @@
+name = "Galactic"
+license = "MIT"
+licenselink = "https://github.com/mohammedshajahan7/galactic/blob/master/LICENSE"
+description = "Simple developer blog"
+homepage = "https://mohammedsh.com"
+tags = []
+features = ["Search filter", "Pagination", "Dark/Light modes"]
+min_version = "0.41.0"
+
+[author]
+  name = "Mohammed Shajahan"
+  homepage = "https://mohammedsh.com"

@@ -1,0 +1,7 @@
+{{ $appJs := resources.Get "scripts/App.js" }}
+{{ $appJs = $appJs | fingerprint }}
+<script src="{{ $appJs.Permalink }}"></script>
+
+{{ $themejs := resources.Get "scripts/theme.js" }}
+{{ $themejs = $themejs | fingerprint }}
+<script src="{{ $themejs.Permalink }}"></script>

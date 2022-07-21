@@ -1,0 +1,16 @@
+<div class="box p-posts">
+    <h3 class="title">Popular Posts</h3>
+    <ul class="p_posts">
+        {{ range ( where .Site.RegularPages "Type" "articles" | first 3 ) }}
+            <li class="p_post">
+                <a href="{{ .Permalink }}">
+                    <h3>{{ .Title }}</h3>
+                    <div class="date">
+                        <img src="{{ .Site.BaseURL }}icons/cal.svg" alt="calander" />
+                        <span>{{ dateFormat .Site.Params.dateFormat .Date }}</span>
+                    </div>
+                </a>
+            </li>
+        {{end}}
+    </ul>
+</div>

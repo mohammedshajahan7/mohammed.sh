@@ -1,0 +1,36 @@
+{{ $pag := $.Paginator }}
+{{ if gt $pag.TotalPages 1 -}}
+<nav id="pagination">
+    <ul class="paginator"> 
+        <li class="paginator_btn prev {{ if not $pag.HasPrev }} hidden {{ end }}">
+            <a {{ if $pag.HasPrev }} href="{{ $pag.Prev.URL }}" {{ end }}>&lt;&lt;</a>
+        </li>
+        
+        {{- $ellipsed := false -}}
+        {{- $shouldEllipse := false -}}
+        {{- range $pag.Pagers -}}
+        {{- $right := sub .TotalPages .PageNumber -}}
+        {{- $showNumber := or (le .PageNumber 3) (eq $right 0) -}}
+        {{- $showNumber := or $showNumber (and (gt .PageNumber (sub $pag.PageNumber 2)) (lt .PageNumber (add $pag.PageNumber 2))) -}}
+        {{- if $showNumber -}}
+        {{- $ellipsed = false -}}
+        {{- $shouldEllipse = false -}}
+        {{- else -}}
+        {{- $shouldEllipse = not $ellipsed -}}
+        {{- $ellipsed = true -}}
+        {{- end -}}
+        {{- if $showNumber }}
+
+        <li class="paginator_btn number"><a href="{{ .URL }}" class="{{ if eq . $pag }} active {{ end }}">{{ .PageNumber }}</a></li>
+
+        {{- else if $shouldEllipse }}
+        <li class="paginator_btn number"><a href="#">...</a></li>
+        {{- end -}}
+        {{- end }}
+
+        <li class="paginator_btn next {{ if not $pag.HasNext }} hidden {{ end }}">
+            <a {{ if $pag.HasNext }}href="{{ $pag.Next.URL }}" {{ end }}>&gt;&gt;</a>
+        </li>
+    </ul>
+</nav> <!-- ( #pagination ) -->
+{{ end }}

@@ -1,0 +1,30 @@
+@import './theme.scss';
+@import './tags_color.scss';
+
+
+section#tags {
+    padding: $top_bottom_padding;
+    height: calc(100% - ($header_height  + 80px + 4rem));
+    div.wrapper {
+        height: 100%;
+        ul.tags {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            li.tag {
+                a {
+                    display: block;
+                    font-size: .9rem;
+                    color: #b2becd;
+                    transition-duration: .2s;
+                    padding: 0 .6rem;
+                    border-radius: 0.2rem;
+                    background-color: rgba(38,38,38,1);
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

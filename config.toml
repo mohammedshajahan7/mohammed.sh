@@ -1,0 +1,50 @@
+baseURL = '/'
+languageCode = 'en-us'
+title = 'mohammed.sh'
+theme = 'galactic'
+
+paginate = 3
+paginatePath = 'articles'
+
+[author]
+name = "Mohammed Shajahan"
+
+[taxonomies]
+category = 'categories'
+tag = 'tags'
+
+enableRobotsTXT = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[params]
+dateFormat = 'Jan 2, 2006'
+search = true
+search_minify = false
+
+[markup]
+
+[markup.tableOfContents]
+endLevel = 3
+ordered = false
+startLevel = 2
+
+[markup.highlight]
+anchorLineNos = false
+codeFences = true
+guessSyntax = false
+hl_Lines = ''
+lineAnchors = ''
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = true
+noClasses = true
+style = 'dracula'
+tabWidth = 4
+
+# remove extra white spce in Html
+[minify]
+[minify.tdewolff]
+[minify.tdewolff.html]
+keepWhitespace = false

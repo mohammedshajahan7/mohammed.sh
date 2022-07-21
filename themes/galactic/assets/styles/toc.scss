@@ -1,0 +1,91 @@
+@import './theme.scss';
+
+#toc_container {
+    margin: 2rem 0 0;
+    background: $theme none repeat scroll 0 0;
+    display: table;
+    border: none;
+    font-size: 95%;
+    border-radius: .3rem;
+    width: auto;
+    border-radius: 3px;
+    padding: .9rem 15px;
+    box-shadow: #0a0909d2 0px 10px 20px 0px;
+    .title {
+        font-size: $h_noramal_size;
+        font-weight: 700;
+    }
+    a {
+        color: #059669;
+        text-decoration: underline;
+    }
+    nav#TableOfContents {
+        padding: .3rem 15px;
+        ul {
+            li {
+                ul {
+                   li {
+                    margin-left: 1rem;   
+                   }
+                }
+            }
+        }
+    }
+}
+
+
+// nav#toc_container2 {
+//     margin: 2rem 0 0;
+//     background: $theme none repeat scroll 0 0;
+//     border: 1px solid #aaa;
+//     display: table;
+//     font-size: 95%;
+//     padding: 15px;
+//     width: auto;
+//     border-radius: 3px;
+//     ul, ol {
+//         list-style: none;
+//     }
+//     a {
+//         text-decoration: none;
+//         color: #059669;
+//         text-decoration: underline;
+//     }
+//     span.toc_count {
+//         margin-right: 0.3rem;
+//         color: #059669;
+//     }
+//     h3.title {
+//         margin-bottom: .9rem;
+//     }
+//     ul.toc_list {
+//         list-style: none;
+//         li {
+//             font-size: 18px;
+//             &.mian_title {
+//                 a, span {
+//                     font-weight: 500;
+//                 }
+//             }
+//             &.sub_title {
+//                 font-size: 16px;
+//                 a, span {
+//                     font-weight: 400;
+//                     color: #059669;
+//                 }
+//             }
+//             margin-bottom: 0.7rem;
+//             &:last-child {
+//                 margin-bottom: 0;
+//             }
+//             ul.toc_sub_list {
+//                 li {
+//                     margin-left: 1rem;
+//                     &:first-child {
+//                         margin-top: 0.7rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,36 @@
+{{ define "head" }}    
+    {{ $style := resources.Get "styles/tags.scss" }}
+    {{ $style = $style | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink }}" />
+{{ end }}
+
+
+{{ define "main" }}
+    <section id="search_filter">
+        <div class="wrapper flex_wrapper">
+            <form>
+                <div class="search-input">
+                    <input type="text" placeholder="Search Project" id="searchInput" />
+                </div>
+            </form>
+        </div>
+    </section> <!-- ( #search_filter ) -->
+
+    <section id="tags">
+        <div class="wrapper">
+            {{- if .Title }}
+            <h3 class="head_title">{{ .Title }}</h3>
+            {{ end }}
+            <ul class="tags">
+                {{- $type := .Type }}
+                {{- range $key, $value := .Data.Terms.Alphabetical }}
+                {{- $name := .Name }}
+                {{- $count := .Count }}
+                {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+                <li class="tag"><a href="{{ .Permalink }}" class="{{ .Name }}">#{{ .Name }} {{ $count }}</a></li>
+                {{- end }}
+                {{- end }}
+            </ul>
+        </div>
+    </section> <!-- ( #tags ) -->
+{{ end }}

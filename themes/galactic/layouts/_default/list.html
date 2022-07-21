@@ -1,0 +1,51 @@
+{{ define "main" }}
+    {{- partial "search.html" . -}}
+    <section id="home">
+        <div class="wrapper grid_wrapper">
+            <div class="articles_container">
+                <ul class="articles">
+                    {{.Content}}
+                    {{ range .Paginator.Pages }}
+                        <li class="article">
+                            {{ with .Params.thumbnail }}
+                                <img src="{{ . }}" alt="thumbnail" class="thumbnail" />
+                            {{ end }}
+                            <div class="date">
+                                <img src="{{ .Site.BaseURL }}icons/cal.svg" alt="calander" />
+                                <span>{{ dateFormat .Site.Params.dateFormat .Date }}</span>
+                            </div>
+                            <h3 class="title"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                            <p class="text">
+                                <a href="{{ .Permalink }}">{{ .Summary | safeHTML | truncate 150 }}</a>
+                            </p>
+                            <hr class="line" />
+                            <div class="links">
+                                <a href="" class="author">
+                                    <img src="{{ .Site.BaseURL }}icons/auth.svg" alt="author" />
+                                    <span>Mohammed</span>
+                                </a>
+                                <a href="" class="icon">
+                                    <img src="{{ .Site.BaseURL }}icons/auth.svg" alt="likes" />
+                                    <span>(45)</span>
+                                </a>
+                                <a href="" class="icon">
+                                    <img src="{{ .Site.BaseURL }}icons/auth.svg" alt="commands" />
+                                    <span>(45)</span>
+                                </a>
+                            </div>
+                        </li>
+                    {{ end }}
+                </ul>
+                {{- partial "pagination.html" . -}}
+            </div> <!-- ( #home > .wrapper.grid_wrapper > div.articles_container ) -->
+
+            <aside class="sidebar">
+                {{- partial "categories-box.html" . -}}
+
+                {{- partial "p-posts-box.html" . -}}
+
+                {{- partial "p-tags-box.html" . -}}
+            </aside> <!-- ( #home > .wrapper.grid_wrapper > aside.sidebar ) -->
+        </div><!-- ( #home > .wrapper.grid_wrapper ) -->
+    </section> <!-- ( #home ) -->
+{{ end }}

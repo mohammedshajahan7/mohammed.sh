@@ -1,0 +1,61 @@
+@import './theme.scss';
+
+
+section#donate {
+    padding: $top_bottom_padding;
+    div.content {
+        line-height: $line_height;
+        p {
+            font-size: $p_size;
+            font-weight: 400;
+            margin-bottom: .8rem;
+        }
+    }
+    div.donations {
+        line-height: 3rem;
+        h3 {
+            font-size: $h_noramal_size;
+            font-weight: 600;
+        }
+        p {
+            font-size: $p_size;
+            font-weight: 400;
+            margin-bottom: .8rem;
+        }
+        div.table {
+            width: 100%;
+            overflow-x: scroll;
+            table {
+                border-radius: .5rem;
+                width: 100%;
+                border-collapse: collapse;
+                border: 2px solid $border_color;
+                text-align: left;
+                background: transparent;
+                th {
+                    padding: .2rem .8rem;
+                    text-transform: uppercase;
+                    letter-spacing: .1rem;
+                    font-size: $h_noramal_size;
+                    font-weight: 700;
+                    color: rgba(45,212,191,1);
+                    border-bottom: 2px solid $border_color;
+                }
+                td {
+                    padding: .2rem .8rem;
+                    font-size: $h_noramal_size;
+                    font-weight: 500;
+                    border-bottom: 2px solid $border_color;
+                }
+                tfoot {
+                    tr {
+                        th {
+                            text-align: center;
+                            padding: .2rem 0 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
