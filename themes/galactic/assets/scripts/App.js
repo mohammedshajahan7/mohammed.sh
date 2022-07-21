@@ -30,6 +30,12 @@ window.addEventListener('load', ()=>{
             menu.classList.remove('active')
         }
     })
+
+    window.addEventListener('scroll', (event)=>{
+        if(event.target != menu && event.target.parentNode != menu){
+            menu.classList.remove('active')
+        }
+    })
     // Toggle Menu End
 
 
