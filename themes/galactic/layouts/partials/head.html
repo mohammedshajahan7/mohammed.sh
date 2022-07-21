@@ -18,9 +18,3 @@
 {{ $style := resources.Get "styles/main.scss" }}
 {{ $style = $style | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.Permalink }}" />
-
-{{ if eq (relURL .Page.RelPermalink) ("/" | safeHTML) }}
-    {{ $style := resources.Get "styles/index.scss" }}
-    {{ $style = $style | toCSS | minify | fingerprint }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}" />
-{{ end }}
