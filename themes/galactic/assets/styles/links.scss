@@ -4,12 +4,20 @@ section#links {
     padding: $top_bottom_padding;
     line-height: $line_height;
     text-align: center;
+    h3.head_title {
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 2rem;
+    }
     ul.links {
         width: 30%;
         margin: 0 auto;
         list-style: none;
         @media all and(max-width: 980px){
             width: 50%;
+        }
+        @media all and(max-width: 640px){
+            width: 80%;
         }
         li.link {
             width: 100%;
